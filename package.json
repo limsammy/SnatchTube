@@ -9,7 +9,11 @@
   "author": "sam",
   "license": "ISC",
   "dependencies": {
+    "chalk": "^2.3.2",
+    "clear": "^0.1.0",
     "dotenv": "^5.0.1",
+    "figlet": "^1.2.0",
+    "inquirer": "^5.1.0",
     "pryjs": "^1.0.3",
     "simple-youtube-api": "^5.0.1",
     "youtube-mp3-downloader": "^0.5.3"

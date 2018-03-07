@@ -9,7 +9,7 @@ const YD = new YoutubeMp3Downloader({
   "ffmpegPath": "/usr/local/Cellar/ffmpeg/3.4.2/bin/ffmpeg",
   "outputPath": "./exports",
   "youtubeVideoQuality": "highest",
-  "queueParallelism": 2,
+  "queueParallelism": 10,
   "progressTimeout": 2000
 });
 
@@ -48,4 +48,34 @@ function snatchMp3(video_id) {
   });
 };
 
-snatchPlaylist('https://www.youtube.com/playlist?list=PLJKDxKDJBeYnen4wYXDY8jhlcZsDAsaT6')
+module.exports = {
+
+};
+
+// snatchPlaylist('https://www.youtube.com/playlist?list=PLJKDxKDJBeYnen4wYXDY8jhlcZsDAsaT6')
+const chalk = require('chalk');
+const clear = require('clear');
+const figlet = require('figlet');
+const inquirer  = require('./lib/inquirer');
+
+clear();
+console.log(
+  chalk.yellow(
+    figlet.textSync('SnatchTube', {
+      horizontalLayout: 'full'
+    })
+  )
+);
+console.log(
+  chalk.yellow(
+    'Get mp3s of a youtube playlist')
+);
+
+const run = async () => {
+  const choice = await inquirer.promptUserForURL();
+  eval(pry.it);
+  console.log(choice);
+  snatchPlaylist(choice.choice);
+};
+
+run();
