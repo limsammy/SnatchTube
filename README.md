@@ -5,4 +5,5 @@
 4. `mkdir exports`
 5. `touch .env`
 6. Add an `API_KEY` value
-7. Slack me for my youtube api key if you're lazy
+7. run `npm i`
+8. Slack me for my youtube api key if you're lazy
