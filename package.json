@@ -1,0 +1,11 @@
+{
+  "name": "tune-snatch",
+  "version": "1.0.0",
+  "description": "Fetches mp3's of youtube playlists.",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "sam",
+  "license": "ISC"
+}
