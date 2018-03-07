@@ -21,7 +21,7 @@ function snatchPlaylist(playlist_url) {
       console.log(`The playlist's title is ${playlist.title}`);
       playlist.getVideos()
         .then(videos => {
-          console.log(`This playlist has ${videos.length === 300 ? '300+' : videos.length} videos.`);
+          console.log(`This playlist has ${videos.length === 150 ? '150+' : videos.length} videos.`);
           videos.forEach(function(element) {
             snatchMp3(element.id);
           });
