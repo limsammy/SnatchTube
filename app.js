@@ -22,9 +22,22 @@ function snatchPlaylist(playlist_url) {
       playlist.getVideos()
         .then(videos => {
           console.log(`This playlist has ${videos.length === 150 ? '150+' : videos.length} videos.`);
-          videos.forEach(function(element) {
-            snatchMp3(element.id);
-          });
+          for (var i = 0; i < videos.length; i++) {
+            // eval(pry.it);
+            let video_id = videos[i].id;
+            setTimeout(() => { snatchMp3(video_id); }, 2000 );
+          };
+
+
+
+          // videos.forEach(function(element) {
+          //   try {
+          //     snatchMp3(element.id);
+          //   } catch(err) {
+          //     eval(pry.it);
+          //     console.log('Could not download...');
+          //   };
+          // });
         })
         .catch(console.log);
     })
@@ -40,12 +53,12 @@ function snatchMp3(video_id) {
   });
 
   YD.on("error", function(error) {
-    console.log(error);
+    console.log('THIS IS AN ERROR: ' + error);
   });
 
-  YD.on("progress", function(progress) {
-    console.log(JSON.stringify(progress));
-  });
+  // YD.on("progress", function(progress) {
+  //   console.log(JSON.stringify(progress));
+  // });
 };
 
 module.exports = {
@@ -56,7 +69,7 @@ module.exports = {
 const chalk = require('chalk');
 const clear = require('clear');
 const figlet = require('figlet');
-const inquirer  = require('./lib/inquirer');
+const inquirer = require('./lib/inquirer');
 
 clear();
 console.log(
@@ -73,9 +86,11 @@ console.log(
 
 const run = async () => {
   const choice = await inquirer.promptUserForURL();
-  eval(pry.it);
+  // eval(pry.it);
   console.log(choice);
   snatchPlaylist(choice.choice);
 };
 
 run();
+
+// snatchMp3('9eBfa9nNzvk');
