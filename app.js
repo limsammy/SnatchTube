@@ -10,7 +10,7 @@ const YD = new YoutubeMp3Downloader({
   "outputPath": "./exports",
   "youtubeVideoQuality": "highest",
   "queueParallelism": 10,
-  "progressTimeout": 2000
+  "progressTimeout": 20000
 });
 
 const youtube = new YouTube(process.env.API_KEY);
