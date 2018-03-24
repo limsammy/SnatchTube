@@ -4,6 +4,7 @@ dotenv.load();
 const YouTube = require('simple-youtube-api');
 const YoutubeMp3Downloader = require("youtube-mp3-downloader");
 const pry = require('pryjs');
+var fs = require('fs');
 
 const YD = new YoutubeMp3Downloader({
   "ffmpegPath": "/usr/local/Cellar/ffmpeg/3.4.2/bin/ffmpeg",
@@ -24,20 +25,14 @@ function snatchPlaylist(playlist_url) {
           console.log(`This playlist has ${videos.length === 150 ? '150+' : videos.length} videos.`);
           for (var i = 0; i < videos.length; i++) {
             // eval(pry.it);
-            let video_id = videos[i].id;
-            setTimeout(() => { snatchMp3(video_id); }, 2000 );
+            if (!fs.existsSync(`./exports/${videos[i].title}.mp3`)) {
+              let video_id = videos[i].id;
+              snatchMp3(video_id);
+            } else {
+              console.log('==============')
+              console.log('SKIPPED A SONG')
+            };
           };
-
-
-
-          // videos.forEach(function(element) {
-          //   try {
-          //     snatchMp3(element.id);
-          //   } catch(err) {
-          //     eval(pry.it);
-          //     console.log('Could not download...');
-          //   };
-          // });
         })
         .catch(console.log);
     })
