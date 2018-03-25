@@ -23,20 +23,23 @@ function snatchPlaylist(playlist_url) {
       playlist.getVideos()
         .then(videos => {
           console.log(`This playlist has ${videos.length === 150 ? '150+' : videos.length} videos.`);
-          for (var i = 0; i < videos.length; i++) {
-            // eval(pry.it);
-            if (!fs.existsSync(`./exports/${videos[i].title}.mp3`)) {
-              let video_id = videos[i].id;
-              snatchMp3(video_id);
-            } else {
-              console.log('==============')
-              console.log('SKIPPED A SONG')
-            };
-          };
+          checkDirectory(videos);
         })
         .catch(console.log);
     })
     .catch(console.log);
+};
+
+function checkDirectory(videos) {
+  for (var i = 0; i < videos.length; i++) {
+    if (!fs.existsSync(`./exports/${videos[i].title}.mp3`)) {
+      let video_id = videos[i].id;
+      snatchMp3(video_id);
+    } else {
+      console.log('==============')
+      console.log('SKIPPED A SONG')
+    };
+  };
 };
 
 function snatchMp3(video_id) {
