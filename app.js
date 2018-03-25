@@ -9,7 +9,7 @@ var fs = require('fs');
 const YD = new YoutubeMp3Downloader({
   "ffmpegPath": "/usr/local/Cellar/ffmpeg/3.4.2/bin/ffmpeg",
   "outputPath": "./exports",
-  "youtubeVideoQuality": "highest",
+  "youtubeVideoQuality": "lowest",
   "queueParallelism": 10,
   "progressTimeout": 20000
 });
